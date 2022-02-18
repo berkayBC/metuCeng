@@ -1,0 +1,99 @@
+# name = Berkay Bartug Cetin
+# ID = 2309839
+
+# Execution begins at address 0 
+.pos 0
+        irmovq stack, %rsp      # Set up stack pointer
+        irmovq root, %rdi               # set parameter
+        call max_bst                    # call max_bst(root)
+        halt                            # Terminate program
+
+# A sample eleven-element BST. Absolutely positioned
+# to avoid confusion when debugging.
+.pos 0x200
+root:
+        .quad 17
+        .quad node6
+        .quad node24
+node6:
+        .quad 6
+        .quad node4
+        .quad node11
+node4:
+        .quad 4
+        .quad node3
+        .quad node5
+node3:
+        .quad 3
+        .quad 0
+        .quad 0
+node5:
+        .quad 5
+        .quad 0 # Remember that 0 is null.
+        .quad 0
+node11:
+        .quad 11
+        .quad node8
+        .quad 0
+node8:
+        .quad 8
+        .quad 0
+        .quad 0
+node24:
+        .quad 24
+        .quad node19
+        .quad node40
+node19:
+        .quad 19
+        .quad 0
+        .quad 0
+node40:
+        .quad 40
+        .quad 0
+        .quad node52
+node52:
+        .quad 52
+        .quad 0
+        .quad 0
+
+# struct btree {
+#     long value;
+#     struct btree *left, *right;
+# };
+# long max_bst(const struct btree *root)
+# {
+#     long max = 0; /* Zero initially, in case the tree is empty. */
+#     if (root) { /* In case the root is not null... */
+#         /* Go right until you cannot anymore to find the max. */
+#         while (root->right)
+#             root = root->right;
+#         max = root->value; /* The value of the last node is the max. */
+#     }
+#     return max; /* Return the maximum */
+# }
+
+###### begin max_bst
+max_bst:
+        xorq %rax, %rax       # max = 0
+        jmp test1             # jump directly to test if root is null
+
+loop:
+        mrmovq $16(%rdi), %rcx
+        andq %rcx, %rcx   # test if root-right == null
+        je end                          # return loop if it's not null
+        mrmovq $16(%rdi), %rdi          # root = root->right;
+        mrmovq (%rdi), %rcx             # root->value
+        rrmovq %rcx, %rax              # max = root->value
+        jmp loop
+
+test1:
+        andq %rdi,%rdi  # test if root == null
+        jne loop        # return loop if it's not null
+        ret
+
+end:
+        ret
+
+##### end max_bst
+        .pos 0x900
+stack:

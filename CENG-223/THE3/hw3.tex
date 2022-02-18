@@ -1,0 +1,125 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[dvips]{graphicx}
+\usepackage{epsfig}
+\usepackage{fancybox}
+\usepackage{verbatim}
+\usepackage{array}
+\usepackage{latexsym}
+\usepackage{alltt}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[hmargin=3cm,vmargin=5.0cm]{geometry}
+\topmargin=-1.8cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+
+\newcommand{\HRule}{\rule{\linewidth}{1mm}}
+\newcommand{\kutu}[2]{\framebox[#1mm]{\rule[-2mm]{0mm}{#2mm}}}
+\newcommand{\gap}{ \\[1mm] }
+
+\newcommand{\Q}{\raisebox{1.7pt}{$\scriptstyle\bigcirc$}}
+
+\lstset{
+    %backgroundcolor=\color{lbcolor},
+    tabsize=2,
+    language=C++,
+    basicstyle=\footnotesize,
+    numberstyle=\footnotesize,
+    aboveskip={0.0\baselineskip},
+    belowskip={0.0\baselineskip},
+    columns=fixed,
+    showstringspaces=false,
+    breaklines=true,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    %frame=single,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    identifierstyle=\ttfamily,
+    keywordstyle=\color[rgb]{0,0,1},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{0.627,0.126,0.941},
+}
+
+
+\begin{document}
+
+
+
+\noindent
+\HRule \\[3mm]
+\small
+\begin{tabular}[b]{lp{3.8cm}r}
+{} Middle East Technical University &  &
+{} Department of Computer Engineering \\
+\end{tabular} \\
+\begin{center}
+
+                 \LARGE \textbf{CENG 223} \\[4mm]
+                 \Large Discrete Computational Structures \\[4mm]
+                \normalsize Fall '2020-2021 \\
+                    \Large Homework 3 \\
+                \normalsize Student Name and Surname: Berkay Bartuğ Çetin \\
+                \normalsize Student Number: 2309839 \\
+\end{center}
+\HRule
+
+
+\section*{Question 1}
+We can write problem as; $\left(2^{11}\right)^2+\left(4^{11}\right)^4+\left(6^{11}\right)^6+\left(8^{10}\right)^8+\left(10^{11}\right)^{10} \equiv ?(mod11)$ \\
+Then if we apply Fermat's Little Theorem to the elements one-by-one we get; \\
+$\left(2^{11}\right)^2 \equiv 2^2(mod11) \equiv 4(mod11)$ \\
+$\left(4^{11}\right)^4 \equiv 4^4(mod11) \equiv 256(mod11) \equiv 3(mod11)$ \\
+$\left(6^{11}\right)^6 \equiv 6^6(mod11) \equiv 3^3(mod11) \equiv 5(mod11)$ \\
+$\left(8^{10}\right)^8 \equiv 1^8(mod11) \equiv 1(mod11)$ \\
+$\left(10^{11}\right)^{10} \equiv 10^{10}(mod11)$ We need to apply Fermat's Thm. again here; \\
+$10^{10}(mod11) \equiv 1(mod11)$. As problem requires we need to sum all this result to get the final result. \\
+$4(mod11)+3(mod11)+5(mod11)+1(mod11)+1(mod11)\equiv (4+3+5+1+1)(mod11)\equiv 14(mod11)$ \\
+$14(mod11)\equiv 3(mod11)\equiv2^{22}\:+\:4^{44}\:+\:6^{66}\:+\:8^{80}\:+\:10^{110}(mod11)$. \\
+
+\section*{Question 2}
+Note that $a,b \in Z$ are relatively prime if and only if there exist $x,y \in Z$ such that $a*x+b*y=1$. Let $a=5n+3$ and $b=7n+4.$\\
+Then we get $(5n+3)x+(7n+4)y=1$. Now we apply extended Euxlidean Algorithm; \\
+$7n+4 = (5n+3) + (2n+1)$ \\
+$5n+3 = 2*(2n+1) + (n+1)$ \\
+$2n+1 = (n+1) + n$ \\
+$n+1 = n + 1$  When we go back; \\
+$1 = (n+1) - n$ \\ 
+$1 = (n+1) - ((2n+1)-(n+1))$ \\
+$1 = 2*(n+1) - (2n+1)$ \\
+$1 = 2*((5n+3)-2*(2n+1))-(2n+1)$ \\
+$1 = 2*(5n+3) - 5(2n+1)$ \\
+$1 = 2*(5n+3) - 5((7n+4)-(5n+3))$ \\
+$1 = 7*(5n+3) - 5(7n+4)$ We found one solution $(x,y) = (7,-5)$. So 5n+3 and 7n+4 are coprime numbers. \\
+Hence gcd(5n + 3, 7n + 4) = 1. \\
+
+\section*{Question 3}
+	Euclid's Lemma states that $x>1$ is a prime number if and only if $x|a*b$ implies that $x|a$ or $x|b$ for all integers a and b. \\
+	If we modify the question as $m^2-n^2=k*x$ and then $(m-n)*(m+n)=k*x$; \\
+we can see that $x|(m+n)*(m-n)$. \\
+	Suppose that $x|(m-n)$ and $gcd(x,(m+n))=1$. \\
+By Bezout's Lemma, there exist integers (a,b) such that \\
+$a*x+b*(m+n)=1$. Hence $(m-n)*(a*x+b*(m+n))=(m-n)$ and $(m-n)*a*x+(m-n)*b*(m+n)=(m-n)$. \\
+Since $x|x$ and $x|(m-n)*(m+n)$, $x|(m-n)*a*x+(m-n)*b*(m+n)$ as desired. \\ 
+This proof holds for supposing $x|(m+n)$ and $gcd(x,(m-n))=1$. \\
+	Thus $x|(m+n)$ or $x|(m-n)$ by Euclid's Lemma. \\
+
+
+\section*{Question 4}
+If we choose $n=1$ , and put it in the equation; we get $1= 1*(3-1)/2$ is true.\\
+Now we assume that statement S(k):$1+4+7+...+(3k-2)=k*(3k-1)/2$ is also true and we need to prove that; \\
+S(k+1):$1+4+7+...+(3(k+1)-2)=(k+1)*(3(k+1)-1)/2$ is true. Observe that; \\
+$1+4+7+...+(3(k+1)-2)$ = $1+4+7+...+(3k-2)+(3k+1)$ \\
+= $k*(3k-1)/2 + (3k+1)$ = $(k*(3k-1) + 2(3k+1))/2$, \\
+$(k*(3k-1) + 2(3k+1))/2$ = $(3k^2-k+6k+2)/2$ = $(3k^2+3k+2k+2)/2$ = $(k+1)*(3k+2)/2$, \\
+$(k+1)*(3k+2)/2$ = $(k+1)*(3(k+1)-1)/2$\\ 
+Hence by prove by Induction, for all $n\geq1$ the equation is true. \\
+
+\end{document}
+

@@ -1,0 +1,97 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage[hmargin=3cm,vmargin=6.0cm]{geometry}
+%\topmargin=0cm
+\topmargin=-2cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+%\setlength{\leftmargin}{-5cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+
+% symbol commands for the curious
+\newcommand{\setZp}{\mathbb{Z}^+}
+\newcommand{\setR}{\mathbb{R}}
+\newcommand{\calT}{\mathcal{T}}
+
+\begin{document}
+
+\section*{Student Information } 
+%Write your full name and id number between the colon and newline
+%Put one empty space character after colon and before newline
+Full Name :  Berkay Bartuğ Çetin \\
+Id Number : 2309839 \\
+
+% Write your answers below the section tags
+\section*{Answer 1}
+\paragraph{a.}
+i and iii are topologies on A. ii and iv are not topologies on A.
+\newline Because when we check ii (T2), we do not see the union of \{ a \} and \{ b \} and also union of other subsets.
+\newline Similarly when we check iv (T4), we do not see the union of \{ a,c \} and \{ b,c \}.
+\newline But when we check i (T1) and iii (T3), we can see that given sets contains all the unions and intersections of containing subsets.
+
+\paragraph{b.}
+
+\section*{Answer 2}
+\paragraph{a.}
+ Note that $(1,2),(2,1)$ $\in R^2$ are distinct and $f(1,2) = 3 = f(2,1)$. Hence f is not injective.
+\paragraph{b.} 
+ Fix any u in the codomain R. Consider f(a,b) = u = a+b and (a,b) = (u-b,u-a).
+\newline Note that (a,b) lies in the domain R and f(a,b) = a+b = u-b + u-a = 2u -a-b.
+\newline Since u=a+b, f(a,b) = 2u-u = u. This shows that f is surjective.
+\paragraph{c.} If there exists a bijection (one-to-one correspondence) from $[0, \infty)$ to $A * (0, 1)$, we can say that those two sets have the same cardinality.
+\newline We know that there is injective g from $[0, \infty)$ to $A * (0, 1)$. Assume that $g(x) = e^x$.
+\newline Fix any a,b $\in R$ satisfying g(x). By assumption, $g(a) = e^a$ and $g(b) = e^b$.
+\newline g(a) = g(b) iff a=b, so we can think g(x) as $e^x$.
+\newline Fix any a $\in A * (0, 1)$. $g(x) = e^x$ = a. Then $x =ln(a)$.
+\newline So, we know from definition of logaritmic functions, $g(x) = e^x$ is also surjective.
+\newline Hence there exists a bijection from $[0, \infty)$ to $A * (0, 1)$, they have the same cardinality.
+
+\section*{Answer 3}
+\paragraph{a.} The functions f: {0,1}$ \rightarrow$ $Z^+$ have one-to-one correspondance. a1 =f(1), a2 =f(2)  where $a2>a1$. So A is countable.
+\paragraph{b.} The domain of functions actually is the positive integer set $\mathbb{Z}^+$. We know by the theorem $\mathbb{Z}^+\rightarrow\mathbb{Z}^+$ is countable.
+\paragraph{c.} We know by the theorem $\mathbb{Z}^+\Rightarrow\mathbb{Z}^+$ is countable.
+\paragraph{d.} Functions of f can not be injective, so D is not countable.
+\paragraph{e.} Functions of f can not be injective, so E is not countable.
+
+\section*{Answer 4}
+\paragraph{a.} If  $n! = \Theta(n^n)$, there must be some constants k1,k2 such that,
+\newline $k1 * n^n \leq n! \leq k2 * n^n $
+\newline $ln(k1 * n^n) \leq ln(n!) \leq ln(k2 * n^n) $
+\newline ($ln(n!) = n*ln(n) - n$ by Stirling's approximation) $ln(k1) + n*ln(n) \leq n*ln(n) - n \leq ln(k2) + n*ln(n) $ 
+\newline $ln(k1) \leq - n \leq ln(k2) $
+\newline For any k2, $-n \leq k2 $ implies. So $n! = O(n^n)$.
+\newline But there exist no k1 different from 0, so $k1 \leq -n $. So $n! \neq \Omega(n^n)$.
+\newline Therefore, $n! \neq \Theta(n^n)$
+
+\paragraph{b.} Here, $(n+a)^b = n^b+a^b+...  \geq n^b \Rightarrow (n+a)^b= \Omega (n^b)$,
+\newline By definition, $ f(n) = O(g(n))$, as n goes to infinity $\Rightarrow \lvert f(n) \rvert \leq M(g(n))$,
+\newline As n goes to infinity (n>>a), $(n+a) \leq 2n$,
+\newline $(n+a)^b \leq (2n)^b \leq k*n^b$ $\Rightarrow (n+a)^b = O(n^b)$,
+\newline Since $(n+a)^b = \Omega((n^b)$, and $(n+a)^b = O(n^b)$,
+\newline $(n+a)^b = \Theta (n^b)$
+
+\section*{Answer 5}
+\paragraph{a.}
+\paragraph{b.}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

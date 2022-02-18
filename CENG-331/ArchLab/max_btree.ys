@@ -1,0 +1,81 @@
+# name = Berkay Bartug Cetin
+# ID = 2309839
+
+# Execution begins at address 0 
+.pos 0 
+	irmovq stack, %rsp  	# Set up stack pointer  
+	irmovq root, %rdi		# set parameter
+	call max_btree			# call max_bst(root)
+	halt					# Terminate program 
+
+
+# A binary (not search!) tree,
+# absolutely positioned again.
+.pos 0x200
+root:
+.quad 5
+.quad node7
+.quad node12
+node7:
+.quad 7
+.quad node25
+.quad node905
+node25:
+.quad 25
+.quad 0
+.quad 0
+node905:
+.quad 905
+.quad nodem1
+.quad 0
+nodem1:
+.quad -1
+.quad 0
+.quad 0
+node12:
+.quad 12
+.quad node219
+.quad nodem10
+node219:
+.quad 219
+.quad 0
+.quad 0
+nodem10:
+.quad -10
+.quad 0
+.quad node331
+node331:
+.quad 331
+.quad 0
+.quad 0
+
+
+max_btree:
+        andq %rdi, %rdi    #if (root)
+        je done               #if null go to done
+        mrmovq (%rdi), %rcx  
+        pushq %rdi           # save rdi to stack
+        mrmovq 8(%rdi), %rdi   # root = root->left
+        rrmovq %rax, %rbx       # back-up rax in order not to lose
+        rrmovq %rcx, %rax
+        call max_btree    #candidate = max_btree(root->left)
+        call test1
+        popq %rdi       # pop rdi in order to use
+        mrmovq (%rdi), %rcx
+        mrmovq 16(%rdi), %rdi   # root = root->right
+        rrmovq %rcx, %rax
+        call max_btree     #candidate = max_btree(root->right)
+        call test1
+        
+        
+test1:
+        subq  %rcx, %rax        # compare max and candidate
+        rrmovq %rbx, %rax       # restore rax
+        jle done                
+        mrmovq (%rcx), %rax
+        
+done:
+        ret
+
+        .pos 0x900
+stack:

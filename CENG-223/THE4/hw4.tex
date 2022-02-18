@@ -1,0 +1,112 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage[hmargin=3cm,vmargin=6.0cm]{geometry}
+%\topmargin=0cm
+\topmargin=-2cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+%\setlength{\leftmargin}{-5cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+
+% symbol commands for the curious
+\newcommand{\setZp}{\mathbb{Z}^+}
+\newcommand{\setR}{\mathbb{R}}
+\newcommand{\calT}{\mathcal{T}}
+
+\begin{document}
+
+\section*{Student Information } 
+%Write your full name and id number between the colon and newline
+%Put one empty space character after colon and before newline
+Full Name : Berkay Bartuğ Çetin\\
+Id Number : 2309839 \\
+
+% Write your answers below the section tags
+\section*{Answer 1}
+We can choose 1 star, 2 habitable planets and 8 non-habitable planets in $\binom{10}{1}.\binom{20}{2}.\binom{80}{8}$ ways. \\
+When we place 6 non-habitable planets at the center of 10 planets, there will be 2 empty places at the left and right sides of those 6 nonhabitable planets. \\
+We can pick 1 habitable planet from 2 habitable planets in C(2,1) ways and we can put this planet to P(2,1) places. \\
+This leads us to pick the last planet (C(1,1)) and place it to an empty place from other side (P(2,1)).\\
+Other 8 nonhabitable may line up in P(8,8) ways. Then the total number of selection is; 2*2*2*8! \\
+Then we need to think about the way that what if habitable planets gets the 1st-8th places and 3rd-10th places. \\
+We can pick 1 habitable planet in C(2,1) ways and it will be pleaced to 1st place P(1,1), then other habitable planet (C(1,1)) will be placed to 8th place (P(1,1)). \\
+And we ween to consider 3rd-10th case too. Hence total number of selections of those cases; 2*2*8!. \\
+We need to sum those total number of selections up and then our final number of selecitons becomes 12*8! \\
+Multiplying the selection and positioning of a galaxy with a given condition is the number of ways to shape it, hence it is, \\
+$\binom{10}{1}.\binom{20}{2}.\binom{80}{8}.12.8!$ \\
+
+
+\section*{Answer 2}
+Homogeneous recurrence relation is $a_n = 2a_{n-1}+15a_{n-2}-36a_{n-3}+2^n$ \\
+ Characteristic eq. is $ r^3 - 2r^2 - 15r + 36 = 0$\\
+ $ (r-3)^2 . (r+4) = 0$\\
+Characteristic roots are $ r = 3$ with multiplicity 2, and $r = -4$. Hence, homogeneous solution is,\\
+ $a_n^{(h)} = \alpha_1 .3^n + \alpha_2 .n.3^n + \alpha_3 .(-4)^n $\\
+ $F(n) = 2^n$ and 2 is not a root, particular solution is the form of $a_n^{(p)} = c.2^n$. Put $a_n^{(p)} = c.2^n$ into the recurrence relation and we obtain,\\
+ $c.2^n = 2c.2^{(n-1)} + 15c.2^{(n-2)} -36c.2^{(n-3)} + 2^n$\\
+ $=8c.2^{(n-3)} = 2^{(n-3)}.(2c.4 + 15c.2 - 36c + 8)$\\
+ $c = 4/3$\\
+ Hence, we get the particular solution as,\\
+ $a_n^{(p)} = \dfrac{4}{3}.2^n = \dfrac{2^{(n+2)}}{3}$\\
+ We can obtain the general solution from summing particular and homogeneous solutions.\\
+ $a_n = \alpha_1 .3^n + \alpha_2 .n.3^n + \alpha_3 .(-4)^n +  \dfrac{2^{(n+2)}}{3}$\\
+
+
+\newpage
+\section*{Answer 3}
+First we need to note that $a_1 = 5$ because there are 5 one digit odd numbers. \\
+Recurrence relation can be derived by considering how a valid n-digit code may be obtained from $n-1$ digit codes. \\
+An even number can be added to a $n-1$ digit code and we can do that in 5 different ways. \\
+Hence there are $5.a_{n-1}$ ways to form a valid n-digit code. \\
+Moreover, we can derive a valid n-digit code by adding an odd number to a n-1 digit non-valid code. \\
+Since there exist $10^{n-1}$ codes of length n-1, and $a_{n-1}$ of them are valid, there are 5 odd numbers to add. \\
+There is $5.(10^{n-1} - a_{n-1}) $ valid n-digit codes derived by adding an odd number to a non-valid code of length n-1. \\
+All of the n digit valid codes have to be obtained from these ways. \\
+Hence, there are $a_n = 5.a_{n-1} + 5.(10^{n-1} - a_{n-1})= 5.10^{n-1}=a_n$ valid codes. \\
+
+
+\newpage
+\section*{Answer 4}
+Let $G\left(x\right)=\:\sum _{k=0}^{\infty }\:a_kx^k$ \\
+$G\left(x\right)-a_0-a_1x-a_2x^2=\:\sum _{k=3}^{\infty }\:a_kx^k$ \\
+$=\sum _{k=1}^{\infty }\:\left(3a_{k-1}-3a_{k-2}+a_{k-3}\right)x^k$ ($\:\left(a_k=3a_{k-1}-3a_{k-2}+a_{k-3}\right)$ when $k\ge1$) \\
+$=3\:\sum \:_{k=3}^{\infty \:}\:\left(a_{k-1}x^k\right)-3\:\sum \:\:_{k=3}^{\infty \:\:}\:\left(a_{k-2}x^k\right)+\:\sum \:\:_{k=3}^{\infty \:\:}\:\left(a_{k-3}x^k\right)$ \\
+$=3x\sum \:_{k=3}^{\infty \:}\:\left(a_{k-1}x^{k-1}\right)-3x^2\:\sum \:\:_{k=3}^{\infty \:\:}\:\left(a_{k-2}x^{k-2}\right)+\:x^3\sum \:\:_{k=3}^{\infty \:\:}\:\left(a_{k-3}x^{k-3}\right)$ \\
+$(m=k-1,n=k-2, t=k-3)$ \\
+$=3x\sum \:_{m=2}^{\infty \:}\:\left(a_mx^m\right)-3x^2\:\sum \:\:_{n=1}^{\infty \:\:}\:\left(a_nx^n\right)+\:x^3\sum \:\:_{t=0}^{\infty \:\:}\:\left(a_tx^t\right)$ \\
+$=3x\left(G\left(x\right)-a_0-a_1x\right)-3x^2\left(G\left(x\right)-a_0\right)+x^3G\left(x\right)$  ($\sum _{n=0}^{\infty }\:x^n=\frac{1}{1-x}$) \\
+We thus obtained the equation; \\
+$G\left(x\right)-a_0-a_1x-a_2x^2=3x\left(G\left(x\right)-a_0-a_1x\right)-3x^2\left(G\left(x\right)-a_0\right)+x^3G\left(x\right)$ \\
+$G\left(x\right)-1-3x-6x^2=3x\left(G\left(x\right)-1-3x\right)-3x^2\left(G\left(x\right)-1\right)+x^3G\left(x\right)$ $(a_0=1,\:a_1=3\:and\:a_2=6)$ \\
+$G\left(x\right)-1-3x-6x^2=3xG\left(x\right)-3x-3x^2G\left(x\right)-9x^2+x^3G\left(x\right)$ (Distributive Propertey) \\
+$Add\:-3xG\left(x\right)+3x^2G\left(x\right)-x^3G\left(x\right)\:and\:1+3x+6x^2\:to\:each\:side$ \\
+$G\left(x\right)-3xG\left(x\right)+3x^2G\left(x\right)-x^3G\left(x\right)=1$ \\
+
+Using $\:\sum \:_{k=1}^{\infty \:}\:C\left(2+k,k\right)x^k=\frac{1}{\left(1-x\right)^3}$ \\
+$G\left(x\right)= \sum \:_{k=1}^{\infty \:}\:C\left(k+2,k\right)x^k$ \\
+Then we note $a_k=C\left(2+k,k\right)$ \\
+$a_k=\frac{\left(k+2\right)!}{k!2!}$ \\
+
+
+\newpage
+\section*{Answer 5}
+\paragraph{a.}
+R is reflexive ($a+b=b+a\:\Rightarrow \:\left(a,b\right)R\left(a,b\right)$), \\
+R is symmetrix ($a+d=b+c\Rightarrow c+b=d+a\:\Rightarrow\left(c,d\right)R\:\left(a,b\right)$), \\
+R is transitive ($a+d=b+c\:\:and\:c+f=d+e$) \\
+$\Rightarrow a+d+c+f=b+c+d+e$,
+$\Rightarrow a+f=b+e\Rightarrow\:\left(a,b\right)R\left(e,f\right)$. \\
+Hence, R is a equivalence relation. 
+
+\paragraph{b.}
+According to description, $\left(\left(a,b\right),\left(1,2\right)\right)\in R$ if and only if $a+2=b+1\Rightarrow b=a+1$ \\
+So, the equivalance class of (1,2) is; \\
+$\left[\left(1,2\right)\right]_R=\:\left\{\left(a,a+1\right):a\in Z^+\right\}$ \\
+
+
+\end{document}
